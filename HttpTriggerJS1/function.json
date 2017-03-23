@@ -1,0 +1,36 @@
+{
+  "bindings": [
+    {
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "route": "advertisers",
+      "webHookType": "genericJson",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "$return"
+    },
+    {
+      "type": "documentDB",
+      "name": "newSession",
+      "databaseName": "Delty",
+      "collectionName": "Sessions",
+      "createIfNotExists": false,
+      "connection": "mike_DOCUMENTDB",
+      "direction": "out"
+    },
+    {
+      "type": "blob",
+      "name": "outputBlob",
+      "path": "outcontainer/{rand-guid}",
+      "connection": "mikestoragedemo_STORAGE",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}
